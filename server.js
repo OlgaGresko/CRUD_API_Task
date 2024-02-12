@@ -1,13 +1,13 @@
 import http from 'http';
 
-// import { userControllers } from './controllers/index';
-// import controllerWrapper from './decorators/controllerWrapper';
+import * as userControllers from "./src/controllers/userControllers.js";
 
 const server = http.createServer((req, res) => {
   const url = req.url;
 
-  if (url === '/users') {
-    // userControllers.getAll(req, res);
+  if (req.method === 'GET' && req.url === '/')  {
+    userControllers.getAll(req, res);
+    res.statusCode = 200;
   } else if (url === '/posts') {
     // handlePostsRoute(req, res);
   } else {
